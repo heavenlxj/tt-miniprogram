@@ -1,0 +1,199 @@
+
+.upload-box {
+  width: 100%; /* 与屏幕同宽 */
+  height: 300px;
+  background-color: #f0f0f0; /* 灰色背景 */
+  padding: 20rpx; /* 添加一些内边距 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.upload-box-inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-icon {
+  width: 100rpx; /* 控制图标大小 */
+  height: 100rpx;
+  margin-left: 40px;
+}
+
+.upload-text {
+  margin-top: 10rpx; /* 图标和文本之间的间距 */
+  text-align: center;
+}
+
+.upload-container {
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0; /* 设置与上传图片区域相同的背景色 */
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn-container {
+  position: absolute;
+  top: 30px; /* 调整按钮距离顶部的距离 */
+  right: 30px; /* 调整按钮距离右侧的距离 */
+}
+
+.close-btn {
+  width: 30px; /* 设置按钮的宽度 */
+  height: 30px; /* 设置按钮的高度 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; /* 添加指针样式以指示可点击 */
+}
+
+.close-icon {
+  width: 100%; /* 使图标填充按钮的整个区域 */
+  height: 100%;
+}
+.selection-box {
+  margin-bottom: 20rpx;
+  margin-top: 30rpx;
+  padding: 10rpx;
+  border: 1rpx solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selected-style {
+  display: flex;
+  align-items: center;
+  padding: 10rpx;
+  background-color: #f0f0f0;
+  border-radius: 5rpx;
+}
+
+.thumbnail {
+  width: 100rpx;
+  height: 80rpx;
+  border-radius: 5rpx;
+  margin-right: 10rpx;
+}
+
+.style-name {
+  font-size: 20rpx;
+  color: #333;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.duration-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* 水平居中 */
+}
+
+.duration-button {
+  margin: 5rpx; /* 调整间距 */
+  padding: 10rpx 20rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 5rpx;
+  text-align: center;
+  width: calc(33.33% - 10rpx); /* 计算每个按钮的宽度 */
+  box-sizing: border-box; /* 将边框计入宽度 */
+}
+
+.duration-button.selected {
+  border-color: #00fff2; /* 选中时的边框颜色 */
+}
+
+.generate-button {
+  margin-top: 10px;
+  background-color: #007aff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  width: 250rpx; 
+  height: 80rpx; 
+  align-items: center;
+  justify-content: center;
+  display: flex; 
+  font-size: 18px;
+  }
+
+generate-button:hover {
+  background-color: #45a049; /* Darker green color when hovering */
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.2); /* Slightly bigger shadow on hover */
+}
+
+/* Style for the button when pressed */
+.generate-button:active {
+  background-color: #367a37; /* Even darker green color when pressed */
+  box-shadow: 0 2rpx 2rpx rgba(0, 0, 0, 0.2); /* Slightly smaller shadow when pressed */
+}
+
+.detail-page {
+  padding: 20rpx;
+  height: 1000rpx; /* 调整高度 */
+}
+
+.style-list {
+  margin-top: 10rpx;
+  height: 1000rpx; /* 调整高度 */
+  width: 100%; /* 设置scroll-view的宽度为父元素宽度 */
+}
+
+.style-row {
+  width: 100%; /* 每行占满整个父元素的宽度 */
+  display: flex;
+  justify-content: space-between; /* 在每行的两个元素之间均匀分配空白空间 */
+}
+
+.style-item {
+  width: calc(50% - 5rpx); /* 控制每个风格卡片的宽度 */
+  text-align: center;
+  cursor: pointer;
+  margin-right: 10rpx; /* 控制每个风格卡片之间的间距 */
+  display: inline-block; /* 让卡片水平排列 */
+  white-space: normal; /* 设置内部元素换行 */
+  padding-left: 20rpx;
+}
+
+.style-image {
+  height:500rpx;
+  width: 330rpx;
+  border-radius: 5rpx;
+  box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+.style-text {
+  margin-top: 10rpx;
+  font-size: 20rpx;
+  color: #333;
+}
+
+.flower-consumption {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.flower-consumption-label {
+  margin-right: 10px;
+}
+
+.flower-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.flower-consumption-value {
+  color: #f947ff46; /* 消耗花花值的颜色 */
+  font-weight: bold;
+}

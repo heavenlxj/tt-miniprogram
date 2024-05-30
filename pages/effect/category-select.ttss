@@ -1,0 +1,163 @@
+/* category-select.ttss */
+.new-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  margin-top: 20px;
+}
+
+.category-menu {
+  white-space: nowrap; /* Ensure the categories are in a single line */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  flex: 1; /* Allow the menu to take up the available space */
+  width: 100%; /* Ensure the menu takes the full width */
+}
+
+.category-item {
+  display: inline-block; /* Display categories in a single row */
+  margin-right: 10px; /* Add some space between categories */
+  padding: 10px; /* Add padding to the category items for better visual */
+  background-color: #f2f2f2; /* Add background color to the category items */
+  border-radius: 5px; /* Round the corners of the category items */
+}
+
+.category-name {
+  font-size: 16px;
+  color: #333;
+  transition: color 0.3s, text-decoration 0.3s; /* Add transition effect */
+}
+
+.category-name.selected {
+  color: green; /* Change font color for selected category */
+  display: inline-block; /* 让下划线元素变为块级元素 */
+  border-bottom: 2px solid green; /* 添加下划线效果 */
+  margin-bottom: 5px; /* 调整下划线与字体之间的间距 */
+}
+.image-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.image-item {
+  width: 50%; /* Set the width to 50% to make images and cards have the same width */
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background-color: #444; /* Darker gray background for the card */
+  border-radius: 10px; /* Rounded corners for the card */
+  padding: 5px; /* Add padding to the card */
+  width: 90%; /* Full width of the card */
+  display: flex;
+  flex-direction: column; /* Display children vertically */
+  align-items: flex-start; /* Align children to the left */
+}
+
+.image {
+  width: 100%; /* Make the image the same width as the card */
+  height: 200px; /* Maintain aspect ratio */
+  border-radius: 0; /* No rounded corners */
+  border-bottom-left-radius: 0; /* Straight edge for the image */
+  border-bottom-right-radius: 0;
+  display: block;
+}
+
+
+.image-name {
+  margin-top: 5px;
+  margin-left: 10px;
+  font-size: 14px; /* Larger font size for image name */
+  color: white; /* White font color */
+}
+
+.hot-icon {
+  display: flex;
+  margin-right: 3px;
+}
+
+.hot-icon-image {
+  margin-top: 5px;
+  width: 14px; /* Smaller icon width */
+  height: 14px; /* Smaller icon height */
+}
+
+.hot-count {
+  margin-top: 5px;
+  font-size: 12px; /* Smaller font size for count */
+  color: white; /* White font color */
+}
+
+.upload-box {
+  width: 100%; /* 与屏幕同宽 */
+  height: 200px;
+  background-color: #f0f0f0; /* 灰色背景 */
+  padding: 20rpx; /* 添加一些内边距 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.upload-box-inner {
+  text-align: center;
+  width: 100%;
+  height: 200px;
+}
+
+.upload-container {
+  width: 100%;
+  height: 255px;
+  background-color: #f0f0f0; /* 设置与上传图片区域相同的背景色 */
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.upload-icon {
+  width: 100rpx; /* 控制图标大小 */
+  height: 100rpx;
+}
+
+.uploaded-image {
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+}
+
+.custorm-fisrt {
+  width: 100%; /* Make the image the same width as the card */
+  height: 300px; /* Maintain aspect ratio */
+  border-radius: 0; /* No rounded corners */
+  border-bottom-left-radius: 0; /* Straight edge for the image */
+  border-bottom-right-radius: 0;
+  display: block;
+}
+
+.upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.custom-text {
+  margin-top: 5px;
+  margin-left: 10px;
+  font-size: 14px; /* Larger font size for image name */
+  display: flex;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* 视频和创建时间水平居中 */
+  justify-content: space-between; /* 视频和创建时间左右对齐 */
+}

@@ -1,0 +1,46 @@
+<view class="container">
+  <!-- 用户头像、昵称、ID -->
+  <view class="user-info">
+    <image class="avatar" src="{{ userInfo.avatarUrl }}"></image>
+    <text class="nickname">{{ userInfo.nickName }}</text>
+    <text class="userid">ID: {{ userInfo.userId }}</text>
+  </view>
+
+  <!-- 登录按钮 -->
+  <!-- <button class="login-button" wx:if="{{ !isLogged }}" bindtap="onLoginTap">登录</button> -->
+
+  <!-- 功能键 -->
+  <!-- <view class="feature-list"> -->
+    <!-- 会员充值 -->
+    <!-- <view class="feature-item" bindtap="onRechargeTap">
+      <text class="feature-text">会员充值</text>
+    </view> -->
+    <!-- 任务列表 -->
+    <!-- <view class="feature-item" bindtap="onTaskList">
+      <text class="feature-text">任务列表</text>
+    </view>
+  </view> -->
+
+  <!-- 我的作品列表 -->
+  <!-- 这部分先不做懒加载，后续可以根据实际需求添加懒加载 -->
+  <!-- 我的作品列表 -->
+  <view class="work-list">
+    <view class="title">我的作品</view>
+    <block tt:if="{{ workList.length > 0 }}">
+      <block tt:for="{{ workList }}" tt:key="id">
+        <view class="work-card" bindtap="onWorkCardTap" data-work-image="{{ item.url }}">
+          <text class="scenario-name">{{ item.title }}</text>
+          <text class="work-id">ID: {{ item.id }}</text>
+          <text class="work-time">{{ item.created_at }}</text>
+          <image class="work-image" src="{{ item.url }}"></image>
+        </view>
+      </block>
+    </block>
+    <text class="empty-text" tt:else>您的作品列表空空如也</text>
+  </view>
+
+  <view class="container">
+  <view class="title">Native 微信支付示例</view>
+  <button bindtap="pay" class="pay-button">发起支付</button>
+</view>
+</view>

@@ -1,0 +1,294 @@
+
+
+
+.upload-box {
+  width: 100%; /* 与屏幕同宽 */
+  height: 200px;
+  background-color: #f0f0f0; /* 灰色背景 */
+  padding: 20rpx; /* 添加一些内边距 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.upload-box-inner {
+  text-align: center;
+}
+
+.upload-container {
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0; /* 设置与上传图片区域相同的背景色 */
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.upload-icon {
+  width: 100rpx; /* 控制图标大小 */
+  height: 100rpx;
+}
+
+.uploaded-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+}
+
+.upload-text-large {
+  font-size: 30rpx; /* 控制文字大小 */
+  margin-top: 10rpx; /* 上下间距 */
+}
+
+.upload-text-small {
+  font-size: 24rpx; /* 控制文字大小 */
+  color: #999; /* 浅灰色文字颜色 */
+  margin-top: 5rpx; /* 上下间距 */
+}
+
+.upload-text {
+  margin-top: 10rpx;
+  color: #999;
+  font-size: 36rpx;
+  align-items: center;
+}
+
+.input-box {
+  width: 100%;
+  height: 200rpx;
+  margin-top: 30rpx;
+}
+
+.input-textarea {
+  width: 90%;
+  height: 200rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  font-size: 28rpx;
+}
+
+.dropdown-container {
+  position: relative;
+  width: 100%;
+  margin-top: 30rpx;
+  background-color: #f2f2f2;
+}
+
+.selected-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.selected-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 4rpx;
+  font-size: 16rpx;
+}
+
+.selected-image {
+  width: 200rpx; /* Set the desired width for the thumbnail */
+  height: 200rpx; /* Set the desired height for the thumbnail */
+  border-radius: 10rpx; /* Add a border radius to make it slightly rounded */
+  margin-bottom: 10rpx; /* Add some bottom margin to separate the thumbnail from the text */
+}
+
+.selected-item-text {
+  font-size: 22rpx; /* Increase the font size for the image name */
+  color: #333;
+  margin-top: 5rpx;
+}
+
+.dropdown-icon {
+  font-size: 16rpx;
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 200rpx;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1rpx solid #ccc;
+  border-radius: 4rpx;
+  box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+  padding: 10rpx;
+  font-size: 16rpx;
+  color: #333;
+  border-bottom: 1rpx solid #ccc;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.arrow-icon {
+  transform: rotate(0deg);
+  transition: transform 0.3s;
+  font-size: medium;
+}
+
+.dropdown-list.show .arrow-icon {
+  transform: rotate(180deg);
+}
+
+/* Styles for the "生成图片" button */
+.generate-button {
+margin-top: 10px;
+background-color: #007aff;
+color: #fff;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+width: 250rpx; 
+height: 80rpx; 
+align-items: center;
+justify-content: center;
+display: flex; 
+font-size: 18px;
+}
+
+/* Style for the button on hover */
+.generate-button:hover {
+  background-color: #45a049; /* Darker green color when hovering */
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.2); /* Slightly bigger shadow on hover */
+}
+
+/* Style for the button when pressed */
+.generate-button:active {
+  background-color: #367a37; /* Even darker green color when pressed */
+  box-shadow: 0 2rpx 2rpx rgba(0, 0, 0, 0.2); /* Slightly smaller shadow when pressed */
+}
+
+.generated-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px; /* Add some spacing from the previous content */
+  background-color: #f2f2f2; /* Set the background color of the container */
+}
+
+.generated-image {
+  /* The width and height are set dynamically based on the image's aspect ratio */
+  border-radius: 0px; /* Add border radius to make it slightly rounded */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for a better visual effect */
+  cursor: pointer;
+}
+
+
+/* 大图弹窗样式 */
+/* 调整弹窗全屏 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* 弹窗淡入淡出效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.modal-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.modal-image {
+  max-width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 80%; /* Adjust the width as needed */
+  margin-top: 20px;
+}
+
+
+
+.action-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%; /* Divide evenly between buttons with spacing */
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.button-icon {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 6px;
+}
+
+.button-text {
+  font-size: 12px;
+  color: #333;
+}
+
+.input-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.input-label {
+  font-size: 16px;
+  color: #333;
+}
+
+.input-description {
+  font-size: 12px;
+  color: #999;
+  margin-top: 5px;
+}
+
+.input-field {
+  width: 100%;
+  height: 32px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-size: 14px;
+}

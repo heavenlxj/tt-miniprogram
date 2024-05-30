@@ -1,0 +1,64 @@
+<view class="container">
+<scroll-view class="scroll-area" type="nested" scroll-y scroll-top="{{scrollOuterTop}}" scroll-with-animation refresher-enabled="{{true}}" refresher-threshold="{{80}}" refresher-default-style="none" refresher-background="#00182E" refresher-triggered="{{refresherTriggered}}" bind:refresherrefresh="onRefresh" bindscrolltolower="loadMoreVideos">
+<view slot="refresher" class="refresh-container">正在刷新</view>
+
+  <nested-scroll-header>
+    <view class="header">
+      <view class="profile">
+        <image class="head-img" src="https://res.wx.qq.com/op_res/7_miJnK0wxIrh5bV2QqvYcv7mQABQVg50gh51-Kb1mlBq0c8Difu3rXn0ldrZdZwVx9REPbKVyZb3E9Wq6YFLA"></image>
+        <view class="profile-info">
+          <view class="name">微信用户</view>
+          <view class="number">tel：1234567890</view>
+          <view class="ip">IP属地：广东</view>
+        </view>
+      </view>
+      <view class="desc">
+        <view>无情搬砖工</view>
+        <view>野生画手/程序猿</view>
+        <view>徒步/足球/篮球/乒乓球/羽毛球/游戏</view>
+      </view>
+      <view class="tag-list">
+        <view class="tag" bindtap="onPayment">充值</view>
+      </view>
+    </view>
+  </nested-scroll-header>
+  <nested-scroll-header>
+  <view>
+  <text class="profile-info">我的作品</text>
+  </view>
+    <sticky-header offset-top="100">
+      <view class="tab-list-cnt">
+          <view class="tab-list">
+            <view tt:for="{{tabList}}" tt:key="id" class="tab-item {{selectedTab === index ? 'actived' : ''}}" data-index="{{index}}" bind:tap="onTapTab">{{item.name}}</view>
+          </view>
+  
+      </view>
+    </sticky-header>
+  </nested-scroll-header>
+  <nested-scroll-body>
+    <view class="swiper-cnt">
+      <swiper class="swiper" current="{{selectedTab}}" bind:change="onChange">
+        
+        <swiper-item class="swiper-item">
+          <scroll-view class="swiper-list" type="list" scroll-y associative-container="nested-scroll-view" scroll-into-view="{{scrollIntoViewInner2}}" scroll-with-animation>
+          <text class="refresh-text" hidden="{{refreshOnce}}">下拉刷新...</text>
+            <view tt:for="{{tabList[0].list}}" tt:key="id" id="{{item.id}}" class="line" style="height: {{item.height}}px; background-color: {{item.color}};">
+              <view class="line-inner">
+                  <video class="work-video" id="{{ item.id }}" src="{{item.videoUrl}}" controls enable-auto-rotation object-fit="cover" muted show-mute-btn></video>
+                  <view class="content-container">
+                    <text class="video-status" style="color: {{item.videoUrl ? 'green' : 'black'}}">{{item.videoUrl ? '创作完成' : '视频生成中...'}}</text>
+                    <text class="create-time">{{item.created_at}}</text>
+                    <button class="save-btn" hidden="{{item.status !== 'succeeded'}}" data-video-url="{{item.videoUrl}}" bindtap="onDownloadVideo">
+                    <image src="/images/detail/save.png" class="save-icon"></image>
+                    </button>
+                  </view>
+ 
+              </view>
+            </view>
+          </scroll-view>
+        </swiper-item>
+      </swiper>
+    </view>
+  </nested-scroll-body>
+</scroll-view>
+</view>

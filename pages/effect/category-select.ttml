@@ -1,0 +1,40 @@
+<view class="container">
+
+  <scroll-view class="category-menu" scroll-x="{{true}}" enable-flex="{{true}}">
+    <view class="category-item" tt:for="{{categories}}" tt:key="id" bindtap="onSelectCategory" data-category-id="{{item.category}}">
+  <text class="category-name {{selectedCategory === item.category ? 'selected' : ''}}">{{item.category}}</text>
+</view>
+  </scroll-view>
+
+  <scroll-view class="image-list" scroll-y="{{true}}" enable-flex="{{true}}">
+  <block tt:for="{{selectedCategoryImages}}" tt:key="id">
+    <view class="image-item">
+      <block tt:if="{{item.isCustomFirst}}">
+        <!-- <view class="card" bindtap="onUploadImageForCustomCategory"> -->
+          <view class="upload-box-inner" bindtap="onUploadImageForCustomCategory">
+            <view class="upload-container" tt:if="{{!uploadedImageUrl}}">
+              <view class="upload-content">
+               <image class="upload-icon" src="/images/detail/upload.png"></image>
+               <text class="custom-text">上传自定义图片</text>
+               </view>
+            </view>
+            <image class="uploaded-image" tt:else src="{{uploadedImageUrl}}"></image>
+          </view>
+        <!-- </view> -->
+      </block>
+      <block tt:else>
+        <view class="card" bindtap="onSelectImage" data-image-id="{{item.id}}" data-image-name="{{ item.title }}" data-image-path="{{ item.url }}" data-is-custom-first="{{item.isCustomFirst}}">
+          <image class="image" src="{{item.url}}"></image>
+          <view class="content-container">
+            <text class="image-name">{{item.title}}</text>
+            <view class="hot-icon">
+              <image class="hot-icon-image" src="/images/detail/hot.png"></image>
+              <text class="hot-count">9999</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </block>
+</scroll-view>
+</view>

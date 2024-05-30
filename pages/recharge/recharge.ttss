@@ -1,0 +1,36 @@
+/* pages/recharge/recharge.ttss */
+
+.container {
+  padding: 20rpx;
+}
+
+.recharge-card {
+  padding: 20rpx;
+  background-color: #f7f7f7;
+  border-radius: 4rpx;
+  width: 70%;
+  height: 700rpx;
+}
+
+.recharge-image {
+  width: 100%;
+  height: 600rpx;
+  border-radius: 4rpx;
+}
+
+.recharge-description {
+  margin-top: 10rpx;
+  font-size: 14rpx;
+  line-height: 20rpx;
+}
+
+.subscribe-button {
+  margin-top: 30rpx;
+  width: 120rpx;
+  height: 100rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background-color: #007aff;
+  color: #fff;
+  border-radius: 4rpx;
+}

@@ -1,0 +1,12 @@
+<view class="container">
+  <!-- 充值卡片 -->
+  <view class="recharge-card">
+    <image class="recharge-image" src="/images/login/recharge.jpg"></image>
+    <text class="recharge-description">
+      这里是会员功能的介绍，多行展示，会员功能详情，优惠说明等等...
+    </text>
+  </view>
+
+  <!-- 立即订阅按钮 -->
+  <button class="subscribe-button" bindtap="onSubscribeTap">立即订阅</button>
+</view>

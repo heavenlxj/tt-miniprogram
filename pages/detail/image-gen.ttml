@@ -1,0 +1,45 @@
+<view class="container">
+  <Privacy />
+  <view class="upload-box" bindtap="onUploadImage">
+    <view class="upload-box-inner">
+      <view class="upload-container" tt:if="{{!uploadedImageUrl}}">
+        <image class="upload-icon" src="/images/detail/upload.png"></image>
+      </view>
+        <image class="uploaded-image" tt:else src="{{uploadedImageUrl}}"></image>
+    </view>
+  </view>
+
+  <text class="upload-text-large">点击上传您的自拍图片</text>
+  <text class="upload-text-small">一张五官清晰的照片</text>
+
+  <view class="dropdown-container" bindtap="onNavigateToCategorySelect">
+
+    <view class="selected-item">
+      <text class="upload-text" tt:if="{{ !selectedImagePath }}">请选择您喜欢的背景图片</text>
+      <view class="selected-image-container">
+      <image class="selected-image" tt:if="{{ selectedImagePath }}" src="{{ selectedImagePath }}"></image>
+      <text class="selected-item-text">{{ selectedImageName }}</text>
+    </view>
+      <view class="dropdown-icon">
+        <text class="arrow-icon">{{ isDropdownOpen ? '▲' : '▼' }}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="input-container">
+    <text class="input-label">选择需要替换背景中的人物序号</text>
+    <text class="input-description">默认从左到右的顺序，不指定默认为0</text>
+    <input class="input-field" type="number" placeholder="非必填:请输入要替换的人物序号" bindinput="onHumanIdInput" />
+  </view>
+
+
+  <view class="generate-button" bindtap="onGenerateImage">生成图片</view>
+
+  <!-- 图片展示区域 -->
+  <view class="generated-image-container" tt:if="{{ generatedImageSrc }}" bindtap="previewImage" data-preview-image="{{ generatedImageSrc }}">
+  <image class="generated-image" src="{{ generatedImageSrc }}" style="width: {{ containerWidth }}px; height: {{ containerHeight }}px;"></image>
+  </view>
+
+ 
+
+</view>

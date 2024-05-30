@@ -1,0 +1,32 @@
+<!-- index.wxml -->
+
+<view class="container">
+  <!-- 1. 金币余额卡片 -->
+  <view class="balance-card">
+    <view class="balance-info">
+      <text>当前剩余花花：</text>
+      <text>{{ balance }}</text>
+    </view>
+    <!-- <button class="help-button" hover-class="help-button-hover" bindtap="goToHelp">帮助</button> -->
+  </view>
+
+  <!-- 2. 充值金币文案和购买记录 -->
+  <view class="action-bar">
+    <text class="recharge-text">购买花花</text>
+    <!-- <text class="record-text" bindtap="goToPurchaseHistory">购买记录</text> -->
+  </view>
+
+  <!-- 3. 金币充值选项 -->
+  <view class="recharge-options">
+    <block tt:for="{{ rechargeOptions }}" tt:key="index">
+      <view class="recharge-option {{ item.selected ? 'selected' : '' }}" data-index="{{index}}" bindtap="selectRechargeOption">
+        <image class="coin-icon" src="{{ icon }}"></image>
+        <text class="coin-amount">{{ item.amount }}</text>
+        <text class="coin-price">{{ item.price/10 }}元</text>
+      </view>
+    </block>
+  </view>
+
+  <!-- 4. 支付按钮 -->
+  <button class="pay-button" bindtap="pay">支付</button>
+</view>

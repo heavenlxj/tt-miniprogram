@@ -1,0 +1,15 @@
+<view class="container">
+  <block tt:for="{{ sceneList }}" tt:key="id">
+    <!-- 场景列表卡片 -->
+    <view class="scene-card">
+      <image class="scene-image" src="{{ item.image }}"></image>
+      <view class="scene-info">
+        <text class="scene-name">{{ item.name }}</text>
+      </view>
+      <view class="scene-info">
+        <text class="scene-description">{{ item.description }}</text>
+      </view>
+      <button class="create-button" bindtap="onCreateTap" data-type="{{ item.type }}">创作</button>
+    </view>
+  </block>
+</view>
