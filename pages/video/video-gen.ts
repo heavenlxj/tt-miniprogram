@@ -19,6 +19,7 @@ Page({
     flowerCost: 4.5,
     flowerUserOwned: null,
     show: false,
+    animation: {},
     uploading: false, // 标记是否正在上传中
     uploadedVideo: '', // 上传完成后的视频地址
     cameraOpened: false, // 标记相机是否已打开
@@ -288,6 +289,14 @@ Page({
 
   popup() {
     this.setData({ show: true });
+    const animation = tt.createAnimation({
+      duration: 300,
+      timingFunction: 'ease',
+    });
+    animation.translateY(0).step();
+    this.setData({
+      animation: animation.export(),
+    });
   },
 
   exit() {

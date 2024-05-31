@@ -28,7 +28,7 @@
   </view>
   </view>
 
-  <page-container show="{{show}}">
+  <!-- <page-container show="{{show}}">
   <view class="detail-page">
     <scroll-view class="style-list" scroll-x="true" scroll-y="true">
         <block tt:for="{{videoStyles}}" tt:key="index">
@@ -47,7 +47,31 @@
       </block>
     </scroll-view>
   </view>
-</page-container>
+</page-container> -->
+
+<view class="page-container">
+  <view class="detail-page">
+    <cover-view class="popup" hidden="{{!show}}" animation="{{animation}}">
+      <scroll-view class="style-list" scroll-x scroll-y>
+        <block tt:for="{{videoStyles}}" tt:key="index">
+          <block tt:if="{{index % 2 == 0}}">
+            <view class="style-row">
+              <view class="style-item" bindtap="selectStyle" data-index="{{index}}">
+                <text>{{ videoStyles[index].name }}</text>
+                <image src="{{ videoStyles[index].image }}" class="style-image"></image>
+              </view>
+              <view class="style-item" bindtap="selectStyle" data-index="{{index+1}}" tt:if="{{index+1 < videoStyles.length}}">
+                <text>{{ videoStyles[index+1].name }}</text>
+                <image src="{{ videoStyles[index+1].image }}" class="style-image"></image>
+              </view>
+            </view>
+          </block>
+        </block>
+      </scroll-view>
+    </cover-view>
+  </view>
+</view>
+
 
   <!-- 选择视频时长 -->
   <view class="label">选择视频时长</view>
