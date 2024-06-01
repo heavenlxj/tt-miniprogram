@@ -12,21 +12,21 @@ App<IAppOption>({
   },
   onLaunch() {
     // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || [];
+    const logs = tt.getStorageSync('logs') || [];
     logs.unshift(Date.now());
-    wx.setStorageSync('logs', logs);
+    tt.setStorageSync('logs', logs);
 
-    wx.login({
+    tt.login({
       success: (res) => {
         if (res.code) {
           console.log("userCode:", res.code)
           this.globalData.userCode = res.code;
           //获取token
-          wx.request({
+          tt.request({
             url:  `${this.globalData.apiBaseUrl}/api/oauth/login`,
             method: 'POST',
             data: {
-              auth_type: 'xwx',
+              auth_type: 'douyin',
               code: res.code,
             },
             success: (res) => {
@@ -51,7 +51,7 @@ App<IAppOption>({
         }
       },
       fail: () => {
-        console.log("登录失败: wx.login");
+        console.log("登录失败: tt.login");
       },
     });
   },

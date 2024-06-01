@@ -26,7 +26,7 @@ Page({
   },
 
   onLoad: function () {
-    wx.showShareMenu({
+    tt.showShareMenu({
       withShareTicket: true,
       menus: ['shareAppMessage', 'shareTimeline'],
     });
@@ -41,7 +41,7 @@ Page({
 
   async onUploadImage() {
     try {
-      const res = await wx.chooseImage({
+      const res = await tt.chooseImage({
         count: 1, // Limit to 1 image selection
         sizeType: ['original', 'compressed'], 
         sourceType: ['album', 'camera'], 
@@ -51,7 +51,7 @@ Page({
       const tempFilePaths = res.tempFilePaths;
       const imagePath = tempFilePaths[0];
 
-      wx.getFileSystemManager().saveFile({
+      tt.getFileSystemManager().saveFile({
         tempFilePath: imagePath,
         success: (savedRes) => {
           console.log('Temporary file saved:', savedRes.savedFilePath);
@@ -73,7 +73,7 @@ Page({
 
     // Method to handle navigation to "category-select" page
     onNavigateToCategorySelect() {
-      wx.navigateTo({
+      tt.navigateTo({
         url: '/pages/effect/category-select',
       });
     },
@@ -82,7 +82,7 @@ Page({
   async onGenerateImage() {
     try {
       // Show loading indicator
-      wx.showLoading({
+      tt.showLoading({
         title: '正在生成图片...',
       });
   
@@ -100,13 +100,13 @@ Page({
       }
       )
 
-      wx.hideLoading();
+      tt.hideLoading();
 
       this.getImageInfo();
       console.log("获取图片的信息完成")
     } catch (error) {
       // Hide the loading indicator in case of an error
-      wx.hideLoading();
+      tt.hideLoading();
   
       // Print an error message
       console.error('图片生成失败:', error);
@@ -119,7 +119,7 @@ Page({
     return new Promise((resolve, reject) => {
       const userToken = this.data.userToken;
       const apiUrl = `${this.data.apiBaseUrl}/api/face_swap`;
-      wx.uploadFile({
+      ttuploadFile({
         url: apiUrl,
         filePath: imageUrl, 
         name: 'file', 
@@ -151,7 +151,7 @@ Page({
 
   getImageInfo() {
     // Calculate the aspect ratio of the generated image
-    wx.getImageInfo({
+    ttgetImageInfo({
       src: this.data.generatedImageSrc,
       success: (res) => {
         const imageWidth = res.width;
@@ -159,7 +159,7 @@ Page({
         console.debug('生成图片宽度: '+ imageWidth);
         console.debug('生成图片高度: '+ imageHeight);
         const aspectRatio = res.width / res.height;
-        const screenWidth = wx.getSystemInfoSync().windowWidth;
+        const screenWidth = ttgetSystemInfoSync().windowWidth;
         
         // Set the width and height of the container
         this.setData({
@@ -190,10 +190,10 @@ Page({
 
   saveImage: function () {
     // Save the image to the user's photo album
-    wx.saveImageToPhotosAlbum({
+    ttsaveImageToPhotosAlbum({
       filePath: this.data.generatedImageSrc,
       success: (res) => {
-        wx.showToast({
+        ttshowToast({
           title: '保存成功',
           icon: 'success',
         });
@@ -202,7 +202,7 @@ Page({
         console.debug(error);
         if (error.errMsg !== 'saveImageToPhotosAlbum:fail cancel') {
           // 处理保存失败
-          wx.showToast({
+          ttshowToast({
             title: '保存失败',
             icon: 'none',
           });
@@ -216,7 +216,7 @@ Page({
 
   previewImage: function (event) {
     const previewImage = event.currentTarget.dataset.previewImage;
-    wx.previewImage({
+    ttpreviewImage({
       urls: [previewImage],
       current: previewImage,
     });

@@ -35,7 +35,7 @@ Page({
   },
   
   onLoad: function () {
-    wx.showShareMenu({
+    tt.showShareMenu({
       withShareTicket: true,
       menus: ['shareAppMessage', 'shareTimeline'],
     });
@@ -49,7 +49,7 @@ Page({
     //const userId = userInfo.openid;
     //const userId = userInfo.openid;
     const userId = 'xxx';
-    wx.request({
+    tt.request({
       url: `${apiBaseUrl}/api/images/users/${userId}/_generated`,
       method: 'GET',
       success: (res) => {
@@ -85,7 +85,7 @@ Page({
 
   // 点击会员充值按钮的事件处理函数，跳转到会员充值页面
   onRechargeTap: function () {
-    wx.navigateTo({
+    tt.navigateTo({
       url: '/pages/recharge/recharge',
     });
   },
@@ -94,7 +94,7 @@ Page({
   onWorkCardTap: function (event) {
     const workImage = event.currentTarget.dataset.workImage;
 
-    wx.previewImage({
+    tt.previewImage({
       urls: [workImage],
       current: workImage,
     });
@@ -124,12 +124,12 @@ Page({
   },
 
   pay: function () {
-    wx.login({
+    tt.login({
       success: (res) => {
         const { userInfo } = getApp().globalData;
         if (res.code) {
           // 调用后端接口获取预支付订单信息
-          wx.request({
+          tt.request({
             url: 'http://127.0.0.1:8085/unifiedorder',
             method: 'POST',
             data: {
@@ -158,7 +158,7 @@ Page({
                 const paySign = this.generateSign(signParams);
 
                 // 调起支付
-                wx.requestPayment({
+                tt.requestPayment({
                   timeStamp: timeStamp,
                   nonceStr: nonceStr,
                   package: packageStr,

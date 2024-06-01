@@ -1,13 +1,23 @@
 <view class="container">
-<scroll-view class="scroll-area" type="nested" scroll-y scroll-top="{{scrollOuterTop}}" scroll-with-animation refresher-enabled="{{true}}" refresher-threshold="{{80}}" refresher-default-style="none" refresher-background="#00182E" refresher-triggered="{{refresherTriggered}}" bind:refresherrefresh="onRefresh" bindscrolltolower="loadMoreVideos">
-<view slot="refresher" class="refresh-container">正在刷新</view>
+<scroll-view class="scroll-area" 
+scroll-y 
+scroll-top="{{scrollOuterTop}}" 
+scroll-with-animation 
+refresher-enabled="true"
+refresher-threshold="{{80}}" 
+refresher-default-style="black" 
+refresher-background="#00182E" 
+refresher-triggered="{{refresherTriggered}}" 
+bind:refresherrefresh="onRefresh" 
+bindscrolltolower="loadMoreVideos"
+>
 
-  <nested-scroll-header>
+<view class="nested-scroll-header">
     <view class="header">
       <view class="profile">
         <image class="head-img" src="https://res.wx.qq.com/op_res/7_miJnK0wxIrh5bV2QqvYcv7mQABQVg50gh51-Kb1mlBq0c8Difu3rXn0ldrZdZwVx9REPbKVyZb3E9Wq6YFLA"></image>
         <view class="profile-info">
-          <view class="name">微信用户</view>
+          <view class="name">抖音用户</view>
           <view class="number">tel：1234567890</view>
           <view class="ip">IP属地：广东</view>
         </view>
@@ -22,19 +32,23 @@
       </view>
     </view>
   </nested-scroll-header>
-  <nested-scroll-header>
-  <view>
-  <text class="profile-info">我的作品</text>
-  </view>
-    <sticky-header offset-top="100">
-      <view class="tab-list-cnt">
-          <view class="tab-list">
-            <view tt:for="{{tabList}}" tt:key="id" class="tab-item {{selectedTab === index ? 'actived' : ''}}" data-index="{{index}}" bind:tap="onTapTab">{{item.name}}</view>
-          </view>
-  
+
+
+  <view class="nested-scroll-header">
+      <view>
+        <text class="profile-info">我的作品</text>
       </view>
-    </sticky-header>
-  </nested-scroll-header>
+      <view class="sticky-header" style="position: sticky; top: 100rpx;">
+        <view class="tab-list-cnt">
+          <view class="tab-list">
+            <view tt:for="{{tabList}}" tt:key="id" class="tab-item {{selectedTab === index ? 'actived' : ''}}" data-index="{{index}}" bindtap="onTapTab">{{item.name}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+
   <nested-scroll-body>
     <view class="swiper-cnt">
       <swiper class="swiper" current="{{selectedTab}}" bind:change="onChange">

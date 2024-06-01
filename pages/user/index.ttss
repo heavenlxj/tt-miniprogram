@@ -234,3 +234,9 @@ page {
   margin-top: 5px;
   margin-left: 150px;
 }
+
+.nested-scroll-header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

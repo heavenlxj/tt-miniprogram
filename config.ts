@@ -1,4 +1,4 @@
 module.exports = {
   "environment": "product",
-  "apiBaseUrl": "https://api-server-api-server-wcvomnbccr.cn-hangzhou.fcapp.run"
+  "apiBaseUrl": "http://127.0.0.1:9000"
 }

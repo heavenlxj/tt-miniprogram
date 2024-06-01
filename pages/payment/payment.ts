@@ -81,7 +81,7 @@ Page({
   getUserCredits() {
     const userToken=app.globalData.userToken;
     const { apiBaseUrl } = this.data;
-    wx.request({
+    tt.request({
         url: `${apiBaseUrl}/api/credits`,
         header:{
           access_token: userToken,
@@ -109,7 +109,7 @@ Page({
       const openId = app.globalData.openid;
       if (!selectedRechargeOption) {
         console.log("请选择支付的金额");
-        wx.showToast({
+        tt.showToast({
           title: '请选择您要充值的花花数目',
           icon: 'none',
         });
@@ -117,14 +117,14 @@ Page({
       }
       const price = selectedRechargeOption.price;
       console.log("用户发起支付，支付金额:", price);
-      wx.request({
-        url: `${apiBaseUrl}/api/payment/order`,
+      tt.request({
+        url: `${apiBaseUrl}/api/payment/order/douyin`,
         method: 'POST',
         header: {
           access_token: userToken,
         },
         data: {
-          pay_type: 'jsapi',
+          pay_type: 'douyin',
           amount: price,
           payer: openId,
         },
@@ -135,65 +135,34 @@ Page({
           } else if (res.statusCode == 200) {
             const data = res.data;
             console.log('####data:', data);
-            const rawData = JSON.parse(data.message);
-            if (rawData.prepay_id) {
-              const prepay_id = rawData.prepay_id;
-              const timeStamp = String(Math.floor(Date.now() / 1000)); // 当前时间戳
-              const nonceStr = this.generateNonceStr(32); // 生成随机字符串
-              const packageStr = 'prepay_id=' + prepay_id; // 订单详情扩展字符串
-              const signType = 'RSA'; // 签名类型
-              let paySign = '';
-              // 请求签名
-              wx.request({
-                  url: `${apiBaseUrl}/api/payment/sign`,
-                  method: 'POST',
-                  header: {
-                    access_token: userToken,
-                  },
-                  data: {
-                    app_id: appId,
-                    time_stamp: timeStamp,
-                    nonce: nonceStr,
-                    package: packageStr
-                  },
-                  success: (res) => {
-                    if (res.statusCode != 200) {
-                      console.log("生成签名失败");
-                      return;
-                    }
-                    console.log("生成签名成功");
-                    paySign = res.data.data;
-                    // 调起支付
-                    wx.requestPayment({
-                      timeStamp: timeStamp,
-                      nonceStr: nonceStr,
-                      package: packageStr,
-                      signType: signType,
-                      paySign: paySign,
-                      success: (res) => {
-                        console.log('Payment success:', res);
-                        wx.showToast({
-                          title: '支付成功',
-                          icon: 'none',
-                        });
-                        return;
-                      },
-                      fail: (res) => {
-                        console.log('Payment failed:', res);
-                      }
-                    });
-                  },
-                  fail: (res) => {
-                    console.log("签名失败");
-                    return;
-                  }
+            const orderInfo = JSON.parse(data.message);
+            //
+            //  "data": {
+            //      "order_id": "N6819903302604491021",
+            //      "order_token": "CgwIARDiDRibDiABKAESTgpMbBhsCG7V1MPGAvpICgUSyGcuNOVb/BnCOi9EXgAxIxDqLTwCA6Hd3tNrCde28o0qjmAJQsmLrD18ifr5QktalszSSmTpHCqEm3h55xoA"
+            //    }
+            //
+            
+            tt.pay({
+              orderInfo: orderInfo,
+              service: 5,
+              success(res) {
+                if (res.code == 0) {
+                  // 支付成功处理逻辑，只有res.code=0时，才表示支付成功
+                  // 但是最终状态要以商户后端结果为准
+                  console.log("支付成功");
                 }
-              )
+              },
+              fail(res) {
+                // 调起收银台失败处理逻辑
+                console.log("支付失败");
+              },
+            });
             
             } else {
-              console.error('Failed to place order:', data);
+              console.error('Failed to place order:', res);
             }
-        }
+        
         },
         fail: (res) => {
           console.log('Failed to get prepay order:', res);

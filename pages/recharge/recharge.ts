@@ -7,13 +7,13 @@ Page({
           // Here, you would integrate with the payment service (WeChat Pay or Alipay) to initiate the payment
       // You can use external libraries or SDKs provided by WeChat and Alipay for this purpose
       // For this example, we will simulate the payment process with a delay
-      wx.showLoading({
+      tt.showLoading({
         title: '正在支付...',
       });
   
       // Simulate a delay to mimic the payment process
       setTimeout(() => {
-        wx.hideLoading();
+        tthideLoading();
   
         // Payment successful
         this.onPaymentSuccess();
@@ -29,14 +29,14 @@ Page({
       // For example: updateSubscriptionStatus(userId, selectedPlan);
   
       // Show a success message
-      wx.showToast({
+      tt.showToast({
         title: '订阅成功',
         icon: 'success',
         duration: 2000,
         complete: () => {
           // Return to the previous page after a short delay
           setTimeout(() => {
-            wx.navigateBack();
+            tt.navigateBack();
           }, 2000);
         },
       });

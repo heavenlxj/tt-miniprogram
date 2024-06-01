@@ -34,7 +34,7 @@ Page({
    loadCategoriesAndImages() {
     
     try {
-      wx.request({
+      tt.request({
         url: `${this.data.apiBaseUrl}/api/image_gallery`,
         method: 'GET',
         success: (res) => {
@@ -117,7 +117,7 @@ Page({
         });
       }
     }
-    wx.navigateBack();
+    tt.navigateBack();
   },
 
 
@@ -128,7 +128,7 @@ Page({
       const userToken = this.data.userToken;
       console.log("userId:", userId);
       console.log("userToken:", userToken);
-      wx.request({
+      tt.request({
         url: `${this.data.apiBaseUrl}/api/images/users/${userId}/_custom`,
         method: 'GET',
         header: {
@@ -158,7 +158,7 @@ Page({
 
   async onUploadImageForCustomCategory() {
     try {
-      const res = await wx.chooseImage({
+      const res = await tt.chooseImage({
         count: 1, // 最多选择一张图片
         sizeType: ['original', 'compressed'],
         sourceType: ['album'],
@@ -168,7 +168,7 @@ Page({
       const curUserOpenId = app.globalData.userInfo.openid;
       console.log("Upload, 当前用户openid:"+ curUserOpenId);
       // 调用上传图片的接口，并等待上传完成
-      await wx.uploadFile({
+      await tt.uploadFile({
         url: `${this.data.apiBaseUrl}/api/upload_file`,
         filePath: tempFilePath,
         name: 'file',
@@ -211,7 +211,7 @@ Page({
           });
           console.log("图片上传成功");
 
-          wx.showToast({
+          tt.showToast({
             title: "图片上传成功",
             icon: "success",
             duration: 2000,
@@ -219,7 +219,7 @@ Page({
         },
         fail:(error) => {
             console.log("图片上传失败");
-            wx.showToast({
+            tt.showToast({
               title: "图片上传失败",
               icon: "error",
               duration: 2000,

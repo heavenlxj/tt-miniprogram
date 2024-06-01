@@ -56,11 +56,11 @@ Page({
     },
 
     onLoad() {
-      const selectedTab = wx.getStorageSync('selectedTab') || 0; // 从本地缓存中读取参数，默认为 0
+      const selectedTab = tt.getStorageSync('selectedTab') || 0; // 从本地缓存中读取参数，默认为 0
       this.setData({
         selectedTab: parseInt(selectedTab),
       });
-      wx.removeStorageSync('selectedTab'); // 跳转后清除本地缓存
+      tt.removeStorageSync('selectedTab'); // 跳转后清除本地缓存
       
       this.fetchVideoList(1, 5)
       .then((newVideos) => {
@@ -90,7 +90,7 @@ Page({
     },
 
     onPayment() {
-      wx.navigateTo({
+      tt.navigateTo({
         url: '/pages/payment/payment',
       })
     },
@@ -98,7 +98,7 @@ Page({
     async fetchImageList() {
       try {
         const { apiBaseUrl, userToken, userId } = getApp().globalData;
-        wx.request({
+        tt.request({
           url: `${apiBaseUrl}/api/images/users/${userId}/_generated`,
           method: 'GET',
           header: {
@@ -129,7 +129,7 @@ Page({
       return new Promise((resolve, reject) => {
       try {
         const { apiBaseUrl, userToken } = getApp().globalData;
-        wx.request({
+        tt.request({
           url: `${apiBaseUrl}/api/svd/videos?page=${page}&size=${size}`,
           method: 'GET',
           header: {
@@ -231,7 +231,7 @@ Page({
     onShareVideo(event) {
       console.log("分享视频");
       const Url = event.currentTarget.dataset.Url;
-      wx.showShareMenu({ // 显示分享菜单
+      tt.showShareMenu({ // 显示分享菜单
         withShareTicket: true,
         menus: ['shareAppMessage', 'shareTimeline']
       });
@@ -250,7 +250,7 @@ Page({
 
     previewImage: function (event) {
       const previewImage = event.currentTarget.dataset.previewImage;
-      wx.previewImage({
+      tt.previewImage({
         urls: [previewImage],
         current: previewImage,
       });
@@ -258,20 +258,20 @@ Page({
 
     onDownloadVideo(event) {
       const videoUrl = event.currentTarget.dataset.videoUrl; // 获取视频的URL
-      wx.showModal({
+      tt.showModal({
         title: '下载视频',
         content: '是否下载视频到本地？',
         success: function(res) {
           if (res.confirm) {
             // 用户点击了确定按钮，保存视频到本地相册
-            wx.downloadFile({
+            tt.downloadFile({
               url: videoUrl,
               success: function(res) {
                 if (res.statusCode === 200) {
-                  wx.saveVideoToPhotosAlbum({
+                  tt.saveVideoToPhotosAlbum({
                     filePath: res.tempFilePath,
                     success: function() {
-                      wx.showToast({
+                      tt.showToast({
                         title: '视频下载成功',
                         icon: 'success',
                         duration: 2000
@@ -279,7 +279,7 @@ Page({
                     },
                     fail: function(error) {
                       console.error('保存视频到相册失败：', error);
-                      wx.showToast({
+                      tt.showToast({
                         title: '视频下载失败',
                         icon: 'none',
                         duration: 2000
@@ -288,7 +288,7 @@ Page({
                   });
                 } else {
                   console.error('下载视频失败，状态码：', res.statusCode);
-                  wx.showToast({
+                  tt.showToast({
                     title: '视频下载失败',
                     icon: 'none',
                     duration: 2000
@@ -297,7 +297,7 @@ Page({
               },
               fail: function(error) {
                 console.error('下载视频失败：', error);
-                wx.showToast({
+                tt.showToast({
                   title: '视频下载失败',
                   icon: 'none',
                   duration: 2000

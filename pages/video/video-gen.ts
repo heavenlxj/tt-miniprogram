@@ -105,7 +105,7 @@ Page({
       value: 60
     }]
     });
-    const query = wx.createSelectorQuery();
+    const query = tt.createSelectorQuery();
     query.select('.selection-box').boundingClientRect(rect => {
       this.setData({ scrollHeight: rect.height });
     }).exec();
@@ -119,7 +119,7 @@ Page({
     this.setData({
       uploading: true,
     });
-    wx.chooseVideo({
+    tt.chooseVideo({
       sourceType: ['album', 'camera'],
       compressed: true,
       maxDuration: 60, // 最大选择时长为60秒
@@ -185,7 +185,7 @@ Page({
     const userToken=app.globalData.userToken;
     console.log("Video user Token:", userToken);
     if (!uploadedVideo) {
-      wx.showToast({
+      tt.showToast({
         title: '请先上传视频',
         icon: 'none',
       });
@@ -193,7 +193,7 @@ Page({
     }
 
     if (!selectedStyle) {
-      wx.showToast({
+      tt.showToast({
         title: '请选择视频风格',
         icon: 'none',
       });
@@ -201,7 +201,7 @@ Page({
     }
 
     // 发送视频文件、选定风格、和提示信息到后端生成视频
-    wx.showLoading({
+    tt.showLoading({
       title: '视频生成中...',
     });
 
@@ -232,7 +232,7 @@ Page({
       console.log("selectedStyle", selectedStyle);
       console.log("selectedDuration", selectedDuration);
       
-      wx.uploadFile({
+      tt.uploadFile({
         url: apiUrl,
         filePath: uploadedVideo,
         name: 'file',
@@ -258,14 +258,14 @@ Page({
             data.status === 'error' &&
             data.message === 'Insufficient credits' ) {
               console.log("用户credits不足");
-              wx.showToast({
+              tt.showToast({
                 title: '您的花花余额不足,请前往我的->充值页面进行充值',
                 icon: 'none',
                 duration: 3000,
               });
             } else {
             // 视频生成失败
-            wx.showToast({
+            tt.showToast({
               title: '视频生成失败，请重试',
               icon: 'none',
               duration: 2000,
@@ -274,14 +274,14 @@ Page({
         },
         fail: error => {
           console.error('Failed to generate video:', error);
-          wx.showToast({
+          tt.showToast({
             title: '视频生成失败，请重试',
             icon: 'none',
             duration: 2000,
           });
         },
         complete: () => {
-          wx.hideLoading();
+          tt.hideLoading();
         }
       });
     })
@@ -306,7 +306,7 @@ Page({
   getUserCredits() {
     const userToken=app.globalData.userToken;
     const { apiBaseUrl } = this.data;
-    wx.request({
+    tt.request({
         url: `${apiBaseUrl}/api/credits`,
         header:{
           access_token: userToken,
@@ -334,7 +334,7 @@ Page({
 
     const showContent = `生成该视频预计会消耗几分钟的时间,视频生成成功后将会从您的账户中扣除${this.data.flowerCost}花花额度, 成功后可以前往我的页面查看结果, 确定当前的操作吗?`;
 
-    wx.showModal({
+    tt.showModal({
       title: '提示',
       content: showContent,
       success: (res) => {
@@ -354,14 +354,14 @@ Page({
 
 
   navigateToUserPage() {
-    wx.showToast({
+    tt.showToast({
       title: '视频任务提交成功，请前往“我的”页面查看视频生成结果',
       icon: 'none',
       duration: 3000,
       success: () => {
-        wx.setStorageSync('selectedTab', 0); // 将需要的参数保存到本地缓存中
+        tt.setStorageSync('selectedTab', 0); // 将需要的参数保存到本地缓存中
         setTimeout(() => {
-          wx.switchTab({
+          tt.switchTab({
             url: '/pages/user/index', // 使用 switchTab 跳转到 "我的" 页面
           });
         }, 2000); // 2秒后跳转到新页面

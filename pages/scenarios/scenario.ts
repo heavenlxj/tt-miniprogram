@@ -12,7 +12,7 @@ Page({
 
   onLoad: function () {
 
-    wx.showShareMenu({
+    tt.showShareMenu({
       withShareTicket: true,
       menus: ['shareAppMessage', 'shareTimeline'],
     });
@@ -51,11 +51,11 @@ Page({
   onCreateTap: function (event) {
     const type = event.currentTarget.dataset.type;
     if (type === 'swap_face') {
-      wx.navigateTo({
+      tt.navigateTo({
         url: '/pages/detail/image-gen',
       });
     } else if (type === 'video_style') {
-      wx.navigateTo({
+      tt.navigateTo({
         url: '/pages/video/video-gen',
       });
     }
