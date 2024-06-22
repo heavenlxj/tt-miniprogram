@@ -14,5 +14,13 @@ Page({
         console.error("Navigation failed", err);
       }
     });
+  },
+
+  onVideoError(e) {
+    console.error("Video error", e.detail.errMsg);
+  },
+
+  onVideoLoaded(e) {
+    console.log("Video loaded successfully");
   }
 });

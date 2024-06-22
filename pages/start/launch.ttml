@@ -1,29 +1,36 @@
 <view class="container">
     <video 
       class="background-video" 
-      src="https://api-server-api-server-wcvomnbccr.cn-hangzhou.fcapp.run/images/generated/16650f6c308d11efab09128033b91182.mp4" 
+      src="https://cdn.goenhance.ai/images/static/sites/show_cover_2.mp4" 
       autoplay 
       muted 
       loop 
       controls="false"
       object-fit="cover"
-    ></video>
+      binderror="onVideoError"
+      bindloadedmetadata="onVideoLoaded"
+    >
 
+    
     <view class="overlay">
-        <!-- 左上角的logo和文字 -->
-        <view class="header">
-        <image class="logo" src="/images/login/logo.png"></image>
-        <view class="text-container">
-            <text class="app-name">AI CoEvo</text>
-            <text class="slogan">释放每一帧的创造力</text>
-        </view>
-        </view>
-        
-        
-    <!-- 屏幕底部的按钮 -->
-    <button class="start-button" bindtap="startCreating">立即开始创作</button>
+      <!-- 左上角的logo和文字 -->
+      <view class="header">
+      <image class="logo" src="/images/login/logo.png"></image>
+      <view class="text-container">
+          <text class="app-name">AI CoEvo</text>
+          <!-- <text class="slogan">释放每一帧的创造力</text> -->
+      </view>
+      </view>
+      
+      
+  <!-- 屏幕底部的按钮 -->
+  <button class="start-button" bindtap="startCreating">立即开始创作</button>
 
-    </view>
+  </view>
+  
+  
+  </video>
+
 
 
   </view>

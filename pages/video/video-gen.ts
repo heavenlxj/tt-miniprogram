@@ -165,7 +165,7 @@ Page({
   selectStyle(e) {
     const index = e.currentTarget.dataset.index;
     const selectedStyle = this.data.videoStyles[index];
-    this.setData({ selectedStyle, show: false });
+    this.setData({ selectedStyle, showPopup: false });
   },
 
   selectDuration: function (event: any) {
@@ -287,16 +287,28 @@ Page({
     })
   },
 
-  popup() {
-    this.setData({ show: true });
-    const animation = tt.createAnimation({
-      duration: 300,
-      timingFunction: 'ease',
-    });
-    animation.translateY(0).step();
-    this.setData({
-      animation: animation.export(),
-    });
+  // popup() {
+  //   this.setData({ show: true });
+  //   const animation = tt.createAnimation({
+  //     duration: 300,
+  //     timingFunction: 'ease',
+  //   });
+  //   animation.translateY(0).step();
+  //   this.setData({
+  //     animation: animation.export(),
+  //   });
+  // },
+
+  showPopup() {
+    this.setData({ showPopup: true });
+  },
+
+  hidePopup() {
+    this.setData({ showPopup: false });
+  },
+
+  preventHide(e) {
+    // 阻止点击弹窗内容关闭弹窗
   },
 
   exit() {
