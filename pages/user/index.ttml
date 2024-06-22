@@ -31,7 +31,7 @@ bindscrolltolower="loadMoreVideos"
         <view class="tag" bindtap="onPayment">充值</view>
       </view>
     </view>
-  </nested-scroll-header>
+</view>
 
 
   <view class="nested-scroll-header">
@@ -45,11 +45,11 @@ bindscrolltolower="loadMoreVideos"
           </view>
         </view>
       </view>
-    </view>
+  </view>
 
 
 
-  <nested-scroll-body>
+  <view class="nested-scroll-body">
     <view class="swiper-cnt">
       <swiper class="swiper" current="{{selectedTab}}" bind:change="onChange">
         
@@ -73,6 +73,6 @@ bindscrolltolower="loadMoreVideos"
         </swiper-item>
       </swiper>
     </view>
-  </nested-scroll-body>
+  </view>
 </scroll-view>
 </view>
