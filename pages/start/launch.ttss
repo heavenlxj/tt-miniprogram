@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
   }
-  
+
   .background-video {
     position: absolute;
     top: 0;
@@ -16,7 +16,7 @@
     object-fit: cover;
     z-index: 5;
   }
-  
+
   .overlay {
     z-index: 1;
     display: flex;
@@ -29,7 +29,7 @@
     z-index: 1; /* 确保overlay在视频上层 */
     pointer-events: none; /* 确保overlay不干扰视频播放 */
   }
-  
+
   .header {
     position: absolute;
     top: 40px;
@@ -39,33 +39,33 @@
     margin-top: 20px; /* 调整顶部位置 */
     z-index: 2; /* 确保header内容在overlay上层 */
   }
-  
+
   .logo {
     width: 40px;
     height: 40px;
     margin-right: 10px;
     z-index: 2; /* 确保header内容在overlay上层 */
   }
-  
+
   .text-container {
     display: flex;
     flex-direction: column;
     z-index: 2; /* 确保header内容在overlay上层 */
   }
-  
+
   .app-name {
     font-size: 18px;
     color: #fff;
     font-weight: bold;
     z-index: 2; /* 确保header内容在overlay上层 */
   }
-  
+
   .slogan {
     font-size: 14px;
     color: #fff;
     z-index: 2; /* 确保header内容在overlay上层 */
   }
-  
+
   .start-button {
     background: linear-gradient(to right, #A4508B, #5F0A87); /* 紫色渐变背景 */
     color: white; /* 按钮文字颜色 */
@@ -81,4 +81,3 @@
     z-index: 3; /* 确保按钮在overlay上层 */
     pointer-events: auto; /* 确保按钮可以点击 */
   }
-  

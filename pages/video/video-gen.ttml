@@ -19,7 +19,7 @@
   </view>
 
     <view class="selection-box">
-    <button class="btn" bindtap="popup" data-position="bottom">选择视频风格     ▼</button>
+    <button class="btn" bindtap="showPopup" data-position="bottom">选择视频风格     ▼</button>
     <view tt:if="{{selectedStyle}}">
     <view class="selected-style">
       <image src="{{ selectedStyle.image }}" class="thumbnail"></image>
@@ -28,49 +28,28 @@
   </view>
   </view>
 
-  <!-- <page-container show="{{show}}">
-  <view class="detail-page">
-    <scroll-view class="style-list" scroll-x="true" scroll-y="true">
-        <block tt:for="{{videoStyles}}" tt:key="index">
-          <block tt:if="{{index % 2 == 0}}">
-            <view class="style-row">
-              <view class="style-item" bindtap="selectStyle" data-index="{{index}}">
-                <text>{{ videoStyles[index].name}}</text>
-                <image src="{{ videoStyles[index].image }}" class="style-image"></image>
-              </view>
-              <view class="style-item" bindtap="selectStyle" data-index="{{index+1}}" tt:if="{{index+1 < videoStyles.length}}">
-                <text>{{ videoStyles[index+1].name }}</text>
-                <image src="{{ videoStyles[index+1].image }}" class="style-image"></image>
-              </view>
-            </view>
-        </block>
-      </block>
-    </scroll-view>
-  </view>
-</page-container> -->
 
-<view class="page-container">
-  <view class="detail-page">
-    <cover-view class="popup" hidden="{{!show}}" animation="{{animation}}">
-      <scroll-view class="style-list" scroll-x scroll-y>
-        <block tt:for="{{videoStyles}}" tt:key="index">
-          <block tt:if="{{index % 2 == 0}}">
-            <view class="style-row">
-              <view class="style-item" bindtap="selectStyle" data-index="{{index}}">
-                <text>{{ videoStyles[index].name }}</text>
-                <image src="{{ videoStyles[index].image }}" class="style-image"></image>
+    <!-- 弹窗 -->
+    <view class="popup-overlay" tt:if="{{showPopup}}" bindtap="hidePopup">
+      <view class="popup-content" catchtap="preventHide">
+        <scroll-view class="style-list" scroll-x scroll-y>
+          <block tt:for="{{videoStyles}}" tt:key="index">
+            <block tt:if="{{index % 2 == 0}}">
+              <view class="style-row">
+                <view class="style-item" bindtap="selectStyle" data-index="{{index}}">
+                  <text>{{ videoStyles[index].name }}</text>
+                  <image src="{{ videoStyles[index].image }}" class="style-image"></image>
+                </view>
+                <view class="style-item" bindtap="selectStyle" data-index="{{index+1}}" tt:if="{{index+1 < videoStyles.length}}">
+                  <text>{{ videoStyles[index+1].name }}</text>
+                  <image src="{{ videoStyles[index+1].image }}" class="style-image"></image>
+                </view>
               </view>
-              <view class="style-item" bindtap="selectStyle" data-index="{{index+1}}" tt:if="{{index+1 < videoStyles.length}}">
-                <text>{{ videoStyles[index+1].name }}</text>
-                <image src="{{ videoStyles[index+1].image }}" class="style-image"></image>
-              </view>
-            </view>
+            </block>
           </block>
-        </block>
-      </scroll-view>
-    </cover-view>
-  </view>
-</view>
+        </scroll-view>
+      </view>
+    </view>
 
 
   <!-- 选择视频时长 -->
