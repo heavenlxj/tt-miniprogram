@@ -173,6 +173,15 @@ Page({
 
   selectDuration: function (event: any) {
     const duration = event.currentTarget.dataset.duration;
+    const selectedDurationItem = this.data.durations.find(item => item.value === duration);
+    if (selectedDurationItem.vip && !this.data.isPaid) {
+      wx.showToast({
+        title: '该时长需要付费会员才能使用',
+        icon: 'none'
+      });
+      return;
+    }
+    
     this.setData({
       selectedDuration: duration
     })
