@@ -1,6 +1,6 @@
 <view class="container">
   <!-- 视频上传区域 -->
-  <view class="upload-box" bindtap="onUploadVideo">
+  <view class="upload-box" catchtap="{{!uploadedVideo ? 'onUploadVideo' : ''}}">
       <view class="upload-box-inner">
         <image class="upload-icon" src="/images/video/upload.png" tt:if="{{!uploadedVideo}}"></image>
         <text class="upload-text" tt:if="{{!uploadedVideo}}">点击上传或自拍视频</text>
@@ -76,9 +76,10 @@
   <!-- 选择视频时长 -->
   <view class="label">选择视频时长</view>
   <view class="duration-buttons">
-    <block tt:for="{{ durations }}" tt:key="value">
+    <block wx:for="{{ durations }}" wx:key="value">
       <view class="duration-button" bindtap="selectDuration" data-duration="{{ item.value }}" style="{{  item.value === selectedDuration ? 'background-color: #CCCCCC' : ''}}">
         <text>{{ item.text }}</text>
+        <image wx:if="{{ item.vip }}" class="vip-icon" src="/images/video/vip.png"></image>
       </view>
     </block>
   </view>

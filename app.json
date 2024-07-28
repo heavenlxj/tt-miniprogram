@@ -1,1 +1,42 @@
-{"pages":["pages/scenarios/scenario","pages/detail/image-gen","pages/video/video-gen","pages/recharge/recharge","pages/effect/category-select","pages/myinfo/my","pages/logs/logs","pages/user/index","pages/payment/payment"],"tabBar":{"list":[{"pagePath":"pages/scenarios/scenario","text":"创作","iconPath":"images/scenarios/paint.png","selectedIconPath":"images/scenarios/paint.png"},{"pagePath":"pages/user/index","text":"我的","iconPath":"images/scenarios/user.png","selectedIconPath":"images/scenarios/user.png"}]},"window":{"backgroundTextStyle":"light","navigationBarBackgroundColor":"#fff","navigationBarTitleText":"Weixin","navigationBarTextStyle":"black","navigationStyle":"custom"},"style":"v2","componentFramework":"glass-easel","sitemapLocation":"sitemap.json","lazyCodeLoading":"requiredComponents","__usePrivacyCheck__":true}
+{
+  "pages": [
+    "pages/start/launch",
+    "pages/scenarios/scenario",
+    "pages/detail/image-gen",
+    "pages/video/video-gen",
+    "pages/recharge/recharge",
+    "pages/effect/category-select",
+    "pages/myinfo/my",
+    "pages/logs/logs",
+    "pages/user/index",
+    "pages/payment/payment"
+  ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/scenarios/scenario",
+        "text": "创作",
+        "iconPath": "images/scenarios/paint.png",
+        "selectedIconPath": "images/scenarios/paint.png"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "text": "我的",
+        "iconPath": "images/scenarios/user.png",
+        "selectedIconPath": "images/scenarios/user.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "default"
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "__usePrivacyCheck__": true
+}

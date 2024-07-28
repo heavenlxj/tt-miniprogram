@@ -1,0 +1,36 @@
+<view class="container">
+    <video 
+      class="background-video" 
+      src="https://api-server-api-server-wcvomnbccr.cn-hangzhou.fcapp.run/images/custom/custom_4f034abb6694dab3b221fe7438266ff3.mp4"
+      autoplay 
+      muted 
+      loop 
+      controls="false"
+      object-fit="cover"
+      binderror="onVideoError"
+      bindloadedmetadata="onVideoLoaded"
+    >
+
+    
+    <view class="overlay">
+      <!-- 左上角的logo和文字 -->
+      <view class="header">
+      <image class="logo" src="/images/login/logo.jpg"></image>
+      <view class="text-container">
+          <text class="app-name">AI CoEvo</text>
+          <!-- <text class="slogan">释放每一帧的创造力</text> -->
+      </view>
+      </view>
+      
+      
+  <!-- 屏幕底部的按钮 -->
+  <button class="start-button" bindtap="startCreating">立即开始创作</button>
+
+  </view>
+  
+  
+  </video>
+
+
+
+  </view>

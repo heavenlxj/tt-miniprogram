@@ -11,7 +11,8 @@ interface VideoStyle {
 
 interface VideoDuration {
   text: string,
-  value: number
+  value: number,
+  vip: boolean
 }
 
 Page({
@@ -38,7 +39,7 @@ Page({
     this.setData({
       videoStyles: [
         {
-          image: '/images/video/anime1.png',
+          image: '/images/video/anime1_cute.png',
           name: '动画风格1',
           key: 'Animate1',
           type: 'rainbowsweets_v20.safetensors',
@@ -52,7 +53,7 @@ Page({
           workflow_version: 'clay'
         },
         {
-          image: '/images/video/anime2.png',
+          image: '/images/video/anime2_movie.png',
           name: '动画风格2',
           key: 'Animate2',
           type: 'default',
@@ -78,32 +79,34 @@ Page({
           key: 'real',
           type: 'majicmixRealistic_v7.safetensors',
           workflow_version: 'v7'
+        },
+        {
+          image: '/images/video/slamdunk.jpeg',
+          name: '灌篮高手风格',
+          key: 'slamdunk',
+          type: 'rainbowsweets_v20.safetensors',
+          workflow_version: 'ball'
         }
       ],
       durations: [
         {
-        text: '3s',
-        value: 3
+          text: '5s',
+          value: 5,
+          vip: false
         }, 
-      {
-        text: '5s',
-        value: 5
-      }, 
-      { text: '10s',
-        value: 10
-      }, 
-      { 
-        text:'20s',
-        value: 20
-      }, 
-    { 
-      text: '30s',
-      value: 30
-    }, 
-    {
-      text: '1min',
-      value: 60
-    }]
+        { text: '10s',
+          value: 10,
+          vip: false
+        },
+        { text: '15s',
+          value: 15,
+          vip: true
+        },
+        { text: '20s',
+          value: 20,
+          vip: true
+        }
+    ]
     });
     const query = tt.createSelectorQuery();
     query.select('.selection-box').boundingClientRect(rect => {
@@ -217,7 +220,7 @@ Page({
 
   calculateFlowerConsumption: function() {
     const selectedDuration = this.data.selectedDuration;
-    const flowerConsumption = 1.5 * selectedDuration; // 假设1秒钟消耗1.5花花
+    const flowerConsumption = 2 * selectedDuration; // 假设1秒钟消耗1.5花花
     this.setData({
       flowerCost: flowerConsumption.toFixed(2) // 保留两位小数
     });

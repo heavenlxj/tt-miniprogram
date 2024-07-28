@@ -34,7 +34,7 @@ App<IAppOption>({
               this.globalData.userToken = userTokenData.access_token;
               this.globalData.userId = userTokenData.user.id;
               const auth_info = userTokenData.oauth;
-              const openid = auth_info.extra.openid;
+              const openid = auth_info.auth_user_id;
               this.globalData.openid = openid;
               console.log("token:", this.globalData.userToken);
               console.log("platform userId:", this.globalData.userId);

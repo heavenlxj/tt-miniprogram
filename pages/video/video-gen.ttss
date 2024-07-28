@@ -219,3 +219,11 @@ generate-button:hover {
   color: #f947ff46; /* 消耗花花值的颜色 */
   font-weight: bold;
 }
+
+.vip-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40rpx;
+  height: 40rpx;
+}
